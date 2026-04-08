@@ -1,6 +1,6 @@
 # Minigames
+Simple interactive programs written in C using custom batch script for compiling.
 
 * conway's game of life
 * simple procedural generation using wave function collapse
-* written in C
-* win32api for rendering and inputs
+* win32api for custom software rendering and inputs
