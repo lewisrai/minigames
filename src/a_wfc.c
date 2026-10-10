@@ -13,14 +13,14 @@ typedef struct State {
 
 typedef struct TileData {
     int32_t uniqueStates;
-    int32_t *leftEdge;
-    int32_t *rightEdge;
-    int32_t *topEdge;
-    int32_t *bottomEdge;
+    int32_t* leftEdge;
+    int32_t* rightEdge;
+    int32_t* topEdge;
+    int32_t* bottomEdge;
 } TileData;
 
 typedef struct WFC {
-    State *map;
+    State* map;
     int32_t mapWidth;
     int32_t mapHeight;
 
@@ -57,7 +57,7 @@ static const uint32_t triangle4_texture[9] = {0xFF9999FF, 0xFF99FF99, 0xFF9999FF
                                               0xFF99FF99, 0xFF99FF99, 0xFF99FF99,
                                               0xFF9999FF, 0xFF9999FF, 0xFF9999FF};
 
-static const uint32_t *textures[5] = {blank_texture, triangle1_texture, triangle2_texture,
+static const uint32_t* textures[5] = {blank_texture, triangle1_texture, triangle2_texture,
                                       triangle3_texture, triangle4_texture};
 
 static const uint8_t keyRestartWFC = 0x52; // R
@@ -94,7 +94,7 @@ void NewWFC() {
     wfc.shouldGenerate = ResetMap();
 }
 
-void UpdateWFC(uint8_t *keyboardState) {
+void UpdateWFC(uint8_t* keyboardState) {
     if (keyboardState[keyRestartWFC]) {
         wfc.shouldGenerate = ResetMap();
     }

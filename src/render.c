@@ -4,11 +4,11 @@
 
 extern const uint32_t customFont[128];
 
-static uint32_t *bitmapData;
+static uint32_t* bitmapData;
 static int32_t bitmapWidth;
 static int32_t bitmapHeight;
 
-void SetBitmapValues(uint32_t *data, int32_t width, int32_t height) {
+void SetBitmapValues(uint32_t* data, int32_t width, int32_t height) {
     bitmapData = data;
     bitmapWidth = width;
     bitmapHeight = height;
@@ -88,7 +88,7 @@ void DrawRectangleBorder(int32_t x, int32_t y, int32_t width, int32_t height, ui
     }
 }
 
-void DrawString(char *buffer, int32_t x, int32_t y, uint32_t colour, int32_t scale) {
+void DrawString(char* buffer, int32_t x, int32_t y, uint32_t colour, int32_t scale) {
     uint32_t charFont;
 
     int32_t tempX;
@@ -126,7 +126,7 @@ void DrawInteger(int32_t number, int32_t x, int32_t y, uint32_t colour, int32_t 
     DrawString(buffer, x, y, colour, scale);
 }
 
-void DrawTexture(const uint32_t *s_texture, int32_t s_width, int32_t s_height, int32_t d_x,
+void DrawTexture(const uint32_t* s_texture, int32_t s_width, int32_t s_height, int32_t d_x,
                  int32_t d_y, int32_t d_width, int32_t d_height) {
     int32_t tempX;
     int32_t tempY;

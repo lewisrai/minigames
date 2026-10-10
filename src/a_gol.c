@@ -5,8 +5,8 @@
 #include <stdlib.h>
 
 typedef struct GOL {
-    bool *visibleMap;
-    bool *tempMap;
+    bool* visibleMap;
+    bool* tempMap;
 
     int32_t mapWidth;
     int32_t mapHeight;
@@ -39,7 +39,7 @@ void NewGOL() {
     gol.updateCounter = 3;
 }
 
-void UpdateGOL(uint8_t *keyboardState, float cursorPositionX, float cursorPositionY) {
+void UpdateGOL(uint8_t* keyboardState, float cursorPositionX, float cursorPositionY) {
     if (gol.shouldRun == false) {
         if (keyboardState[keyResetGOL]) {
             ResetMaps();

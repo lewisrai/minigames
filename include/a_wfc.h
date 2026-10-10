@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 void NewWFC();
-void UpdateWFC(uint8_t *keyboardState);
+void UpdateWFC(uint8_t* keyboardState);
 void RenderWFC();
 void CloseWFC();
 

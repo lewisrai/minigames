@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 void NewGOL();
-void UpdateGOL(uint8_t *keyboardState, float cursorPositionX, float cursorPositionY);
+void UpdateGOL(uint8_t* keyboardState, float cursorPositionX, float cursorPositionY);
 void RenderGOL();
 void CloseGOL();
 

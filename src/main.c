@@ -18,15 +18,15 @@ typedef struct Window {
     WNDCLASSEXW class;
     MSG message;
 
-    void *handle;
-    void *deviceContext;
+    void* handle;
+    void* deviceContext;
 } Window;
 
-static void InitialiseWindow(Window *window, HINSTANCE instanceHandle);
-static void InitialiseRenderer(BITMAPINFO *bitmapInfo, uint32_t **bitmapData);
-static void UpdateInputs(void *windowHandle, uint8_t *keyboardState, float *cursorPositionX,
-                         float *cursorPositionY);
-static void UpdateWindowChanges(Window *window, bool *shouldWindowResize, uint8_t *keyboardState);
+static void InitialiseWindow(Window* window, HINSTANCE instanceHandle);
+static void InitialiseRenderer(BITMAPINFO* bitmapInfo, uint32_t** bitmapData);
+static void UpdateInputs(void* windowHandle, uint8_t* keyboardState, float* cursorPositionX,
+                         float* cursorPositionY);
+static void UpdateWindowChanges(Window* window, bool* shouldWindowResize, uint8_t* keyboardState);
 
 static const uint8_t keyExit = 0x1B;             // Esc
 static const uint8_t keyToggleFullscreen = 0x7A; // F11
@@ -39,7 +39,7 @@ bool shouldWindowResize = false;
 
 int WINAPI wWinMain(HINSTANCE instanceHandle, HINSTANCE previousInstanceHandle, LPWSTR commandLine,
                     int commandShow) {
-    void *mutex = CreateMutexW(NULL, FALSE, L"MyMinigame");
+    void* mutex = CreateMutexW(NULL, FALSE, L"MyMinigame");
     (void)mutex;
 
     if (GetLastError() == ERROR_ALREADY_EXISTS) {
@@ -63,7 +63,7 @@ int WINAPI wWinMain(HINSTANCE instanceHandle, HINSTANCE previousInstanceHandle, 
     }
 
     BITMAPINFO bitmapInfo;
-    uint32_t *bitmapData;
+    uint32_t* bitmapData;
     InitialiseRenderer(&bitmapInfo, &bitmapData);
 
     uint8_t keyboardState[256];
@@ -117,7 +117,7 @@ LRESULT CALLBACK WindowProc(HWND windowHandle, UINT message, WPARAM wParameter, 
     return DefWindowProcW(windowHandle, message, wParameter, lParameter);
 }
 
-static void InitialiseWindow(Window *gameWindow, HINSTANCE instanceHandle) {
+static void InitialiseWindow(Window* gameWindow, HINSTANCE instanceHandle) {
     gameWindow->displayWidth = defaultInternalWidth * 2;
     gameWindow->displayHeight = defaultInternalHeight * 2;
     gameWindow->minimizeWidth = defaultInternalWidth * 2;
@@ -140,7 +140,7 @@ static void InitialiseWindow(Window *gameWindow, HINSTANCE instanceHandle) {
     gameWindow->class.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 }
 
-static void InitialiseRenderer(BITMAPINFO *bitmapInfo, uint32_t **bitmapData) {
+static void InitialiseRenderer(BITMAPINFO* bitmapInfo, uint32_t** bitmapData) {
     bitmapInfo->bmiHeader.biSize = sizeof(bitmapInfo->bmiHeader);
     bitmapInfo->bmiHeader.biWidth = defaultInternalWidth;
     bitmapInfo->bmiHeader.biHeight = defaultInternalHeight;
@@ -152,8 +152,8 @@ static void InitialiseRenderer(BITMAPINFO *bitmapInfo, uint32_t **bitmapData) {
         malloc(sizeof(uint32_t) * bitmapInfo->bmiHeader.biWidth * bitmapInfo->bmiHeader.biHeight);
 }
 
-static void UpdateInputs(void *windowHandle, uint8_t *keyboardState, float *cursorPositionX,
-                         float *cursorPositionY) {
+static void UpdateInputs(void* windowHandle, uint8_t* keyboardState, float* cursorPositionX,
+                         float* cursorPositionY) {
     GetKeyboardState(keyboardState);
     for (int32_t i = 0; i < 256; i++) {
         keyboardState[i] &= 0x80;
@@ -169,7 +169,7 @@ static void UpdateInputs(void *windowHandle, uint8_t *keyboardState, float *curs
     *cursorPositionY = (float)cursorScreenPosition.y / clientRect.bottom;
 }
 
-static void UpdateWindowChanges(Window *window, bool *shouldWindowResize, uint8_t *keyboardState) {
+static void UpdateWindowChanges(Window* window, bool* shouldWindowResize, uint8_t* keyboardState) {
     if (*shouldWindowResize) {
         RECT windowRectangle;
         GetWindowRect(window->handle, &windowRectangle);

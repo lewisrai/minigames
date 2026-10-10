@@ -13,11 +13,11 @@ static const uint8_t keySwitchProgramRight = 0x45; // E
 static bool allowProgramSwitch = true;
 static ProgramState programState = stateMenu;
 
-void InitialiseApp(uint32_t *bitmapData, int32_t bitmapWidth, int32_t bitmapHeight) {
+void InitialiseApp(uint32_t* bitmapData, int32_t bitmapWidth, int32_t bitmapHeight) {
     SetBitmapValues(bitmapData, bitmapWidth, bitmapHeight);
 }
 
-void UpdateApp(uint8_t *keyboardState, float cursorPositionX, float cursorPositionY) {
+void UpdateApp(uint8_t* keyboardState, float cursorPositionX, float cursorPositionY) {
     switch (programState) {
     case stateMenu:
         if (keyboardState[keySwitchProgramRight] && allowProgramSwitch) {
